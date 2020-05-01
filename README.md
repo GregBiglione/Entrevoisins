@@ -12,6 +12,7 @@ Cliquer sur <b>Entrevoisins</b>
 
 Cliquer sur <b>Clone or Download</b>><b>Download ZIP</b>
 
+<img src = "https://github.com/GregBiglione/Projet_3/blob/master/Capture_readme_P3_1.PNG" title = "Screen 1" alt = "Screen 1">
 
 Décompresser le fichier à l'aide de <a href="https://www.clubic.com/telecharger-fiche9632-winrar.html">WinRar</a> et indiquer le chemin du fichier dans lequel vous souhaitez l'enregistrer.
 
