@@ -20,7 +20,7 @@ Décompresser le fichier à l'aide de <a href="https://www.clubic.com/telecharge
 
 <h2>Importer le fichier</h2>
 
-Une fois dans <b>AndroidStudio</b>><b>File</b>><b>New</b>><b>Import project</b>
+Une fois dans <b>AndroidStudio</b>><b>File</b>><b>New</b>><b>Import Project</b>
 
 <img src = "https://github.com/GregBiglione/Projet_3/blob/master/Capture_readme_P3_3.jpg" title = "Screen 3" alt = "Screen 3">
 
@@ -32,7 +32,7 @@ Cliquez sur <b>Build</b> en bas à gauche
 
 <img src = "https://github.com/GregBiglione/Projet_3/blob/master/Capture_readme_P3_5.PNG" title = "Screen 5" alt = "Screen 5">
 
-Lorsque tous les icônes passent au vers l'application est prête à être utilisée
+Lorsque tous les icônes passent au vers l'application est prête à être utilisée.
 
 <img src = "https://github.com/GregBiglione/Projet_3/blob/master/Capture_readme_P3_6.PNG" title = "Screen 6" alt = "Screen 6">
 
@@ -42,7 +42,7 @@ Cliquer sur l'onglet <b>No devices</b>><b>Open AVD Manager</b>
 
 <img src = "https://github.com/GregBiglione/Projet_3/blob/master/Capture_readme_P3_7.PNG" title = "Screen 7" alt = "Screen 7">
 
-Create Device
+<b>Create Device</b>
 
 <img src = "https://github.com/GregBiglione/Projet_3/blob/master/Capture_readme_P3_8.jpg" title = "Screen 8" alt = "Screen 8">
 
@@ -63,13 +63,7 @@ Une fois le téléchargment terminé (ce qui peut prendre plusieurs minutes)><b>
 
 Cliquer sur le bouton <b>lecture vert</b>
 
-
-
+<img src = "https://github.com/GregBiglione/Projet_3/blob/master/Capture_readme_P3_12.jpg" title = "Screen appli" alt = "Screen appli">
 L'application se lance (cela peut prendre un petit moment si l'émulateur vient d'être créé)
 
-<img src = "<img src = "https://github.com/GregBiglione/Projet_3/blob/master/Presentation_fonctionnement_appli1.PNG" title = "Screen appli" alt = "Screen appli">" title = "Screen 1" alt = "Screen 1">
-
-
-
-
-
+<img src = "https://github.com/GregBiglione/Projet_3/blob/master/Presentation_fonctionnement_appli1.PNG" title = "Screen appli" alt = "Screen appli">
