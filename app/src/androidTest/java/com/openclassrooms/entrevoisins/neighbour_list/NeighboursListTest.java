@@ -99,10 +99,8 @@ public class NeighboursListTest {
        onView(withId(R.id.list_neighbours))
                .perform(actionOnItemAtPosition(mPosition, click()));
 
-       //vérifier que avatarName & neighbourName sont affichés sur l'écran DetailedProfile
-       onView(withId(R.id.avatar_name))
-               .check(matches(withText(mApiService.getNeighbours().get(mPosition).getName())));
-       onView(withId(R.id.firstname))
+       //vérifier que le neighbourName est affiché sur l'écran DetailedProfile
+       onView(withId(R.id.firstName))
                .check(matches(withText(mApiService.getNeighbours().get(mPosition).getName())));
    }
 
