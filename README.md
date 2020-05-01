@@ -8,4 +8,5 @@ Cliquer sur <b>Entrevoisins</b>
 
 Cliquer sur <b>Clone or Download</b>><b>Download ZIP</b>
 
-<img src = "C:/Users/runni/OneDrive/Bureau/OC/P3_tuto.png" title = "download" alt = "download">
+
+Décompresser le fichier à l'aide de <a href="https://www.clubic.com/telecharger-fiche9632-winrar.html">WinRar</a>
