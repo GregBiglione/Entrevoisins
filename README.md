@@ -2,7 +2,7 @@
 
 Ce dépôt contient une mini-application pour le P3 du parcours **Grande École du Numérique**.
 
-<b>Avant de pouvoir utiliser ce fichier sur Android Studio assurez-vous de disposer de suffisament de RAM.</br>
+<b>Avant de pouvoir utiliser ce fichier sur Android Studio assurez-vous de disposer de suffisamment de RAM.</br>
 Android Studio nécessite 4Go de Ram</br>
 Et l'émualteur nécessite 1,7Go de Ram</b>
 
@@ -64,6 +64,7 @@ Une fois le téléchargment terminé (ce qui peut prendre plusieurs minutes)><b>
 Cliquer sur le bouton <b>lecture vert</b>
 
 <img src = "https://github.com/GregBiglione/Projet_3/blob/master/Capture_readme_P3_12.jpg" title = "Screen appli" alt = "Screen appli">
+
 L'application se lance (cela peut prendre un petit moment si l'émulateur vient d'être créé)
 
 <img src = "https://github.com/GregBiglione/Projet_3/blob/master/Presentation_fonctionnement_appli1.PNG" title = "Screen appli" alt = "Screen appli">
