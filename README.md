@@ -8,4 +8,4 @@ Cliquer sur <b>Entrevoisins</b>
 
 Cliquer sur <b>Clone or Download</b>><b>Download ZIP</b>
 
-<img src = "runni\OneDrive\Bureau\OC\P3_tuto.png" title = "download" alt = "download">
+<img src = "Bureau\OC\P3_tuto.png" title = "download" alt = "download">
