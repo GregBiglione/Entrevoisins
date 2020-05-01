@@ -8,7 +8,7 @@ Et l'émualteur nécessite 1,7Go de Ram</b>
 
 <h2>Récupérer le fichier</h2>
 
-Cliquer sur <b>Entrevoisins</b>
+Cliquer sur <a href="https://github.com/GregBiglione/Entrevoisins">Entrevoisins</a>
 
 Cliquer sur <b>Clone or Download</b>><b>Download ZIP</b>
 
@@ -28,7 +28,7 @@ Selectionner <b>Entrevoisins</b>><b>Ok</b>
 
 <img src = "https://github.com/GregBiglione/Projet_3/blob/master/Capture_readme_P3_4.PNG" title = "Screen 4" alt = "Screen 4">
 
-Cliquez sur <b>Build</b> en bas à gauche
+Cliquer sur <b>Build</b> en bas à gauche
 
 <img src = "https://github.com/GregBiglione/Projet_3/blob/master/Capture_readme_P3_5.PNG" title = "Screen 5" alt = "Screen 5">
 
