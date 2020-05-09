@@ -63,9 +63,6 @@ public class NeighboursListTest {
     @Test
     public void myNeighboursList_shouldNotBeEmpty() {
         // First scroll to the position that needs to be matched and click on it.
-        /*onView(ViewMatchers.withId(R.id.list_neighbours))
-                .check(matches(hasMinimumChildCount(1)));*/
-
         onView(allOf(withId(R.id.list_neighbours),isDisplayed()))
                 .check(matches(hasMinimumChildCount(1)));
     }
@@ -74,16 +71,8 @@ public class NeighboursListTest {
      * When we delete an item, the item is no more shown
      */
     @Test
-    public void myNeighboursList_deleteAction_shouldRemoveItem() {
-        /*// Given : We remove the element at position 2
-        onView(withId(R.id.list_neighbours))
-                .check(withItemCount(ITEMS_COUNT));
-        // When perform a click on a delete icon
-        onView(withId(R.id.list_neighbours))
-                .perform(actionOnItemAtPosition(1, new DeleteViewAction()));
-        // Then : the number of element is 11
-        onView(withId(R.id.list_neighbours))
-                .check(withItemCount(ITEMS_COUNT-1));*/
+    public void myNeighboursList_deleteAction_shouldRemoveItem()
+    {
 
         // Given : We remove the element at position 2
         onView(allOf(withId(R.id.list_neighbours), isDisplayed()))
@@ -100,10 +89,6 @@ public class NeighboursListTest {
     @Test
     public void goToDetailedProfile_onClick()
     {
-       //cliquer sur l'élément en identifiant le container parent et ses enfants
-       /*onView(withId(R.id.list_neighbours))
-               .perform(actionOnItemAtPosition(mPosition, click()));*/
-
         //cliquer sur l'élément en identifiant le container parent et ses enfants
         onView(allOf(withId(R.id.list_neighbours), isDisplayed()))
                 .perform(actionOnItemAtPosition(mPosition, click()));
@@ -112,15 +97,6 @@ public class NeighboursListTest {
    @Test
    public void onDetailedProfileLaunch_textView_containName()
    {
-       /*
-       //cliquer sur l'élément en identifiant le container parent et ses enfants
-       onView(withId(R.id.list_neighbours))
-               .perform(actionOnItemAtPosition(mPosition, click()));
-
-       //vérifier que le neighbourName est affiché sur l'écran DetailedProfile
-       onView(withId(R.id.firstName))
-               .check(matches(withText(mApiService.getNeighbours().get(mPosition).getName())));*/
-
        //cliquer sur l'élément en identifiant le container parent et ses enfants
        onView(allOf(withId(R.id.list_neighbours), isDisplayed()))
                .perform(actionOnItemAtPosition(mPosition, click()));
