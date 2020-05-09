@@ -73,7 +73,6 @@ public class NeighboursListTest {
     @Test
     public void myNeighboursList_deleteAction_shouldRemoveItem()
     {
-
         // Given : We remove the element at position 2
         onView(allOf(withId(R.id.list_neighbours), isDisplayed()))
                 .check(withItemCount(ITEMS_COUNT));
@@ -84,7 +83,6 @@ public class NeighboursListTest {
         onView(allOf(withId(R.id.list_neighbours), isDisplayed()))
                 .check(withItemCount(ITEMS_COUNT-1));
     }
-
 
     @Test
     public void goToDetailedProfile_onClick()
@@ -105,7 +103,7 @@ public class NeighboursListTest {
                .check(matches(withText(mApiService.getNeighbours().get(mPosition).getName())));
    }
 
-   @Test
+    @Test
    public void favoritePage_showNeighbours_onlyIfIsFav()
    {
        //cliquer sur l'élément en identifiant le container parent et ses enfants
@@ -115,9 +113,7 @@ public class NeighboursListTest {
        onView(withId(R.id.star_button))
                .perform(click());
        //retour à la page d'accueil
-       onView(withContentDescription("Back"))
-               .perform(click());
-       //pressBack();
+       pressBack();
        //pressBack();
        //Cliquer sur l'onglet des favoris
        onView(withContentDescription("Favorites"))

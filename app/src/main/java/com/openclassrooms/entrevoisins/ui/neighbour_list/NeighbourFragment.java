@@ -110,9 +110,13 @@ public class NeighbourFragment extends Fragment {
     }
 
     @Subscribe
-    public void onDetailedNeighbour(DetailedNeighbourEvent event) {
-        Intent i = new Intent(getContext(), DetailedProfile.class);
-        i.putExtra("neighbourInfo", event.neighbour);
-        startActivity(i);
+    public void onDetailedNeighbour(DetailedNeighbourEvent event)
+    {
+        if (page ==0)
+        {
+            Intent i = new Intent(getContext(), DetailedProfile.class);
+            i.putExtra("neighbourInfo", event.neighbour);
+            startActivity(i);
+        }
     }
 }
