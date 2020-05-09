@@ -62,7 +62,6 @@ public class NeighbourServiceTest {
         List<Neighbour> neighbours = service.getFavorites();
         for (Neighbour n: neighbours)
         {
-            //assertTrue(n.getIsFavorite() == true);
             assertThat(n.getIsFavorite(), is(true));
         }
     }

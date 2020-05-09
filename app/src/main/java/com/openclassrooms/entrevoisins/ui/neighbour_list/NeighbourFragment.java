@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,13 +31,18 @@ public class NeighbourFragment extends Fragment {
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
 
+    private int page;
 
     /**
      * Create and return a new instance
      * @return @{@link NeighbourFragment}
      */
-    public static NeighbourFragment newInstance() {
+    public static NeighbourFragment newInstance(int page)
+    {
+        Bundle b = new Bundle();
+        b.putInt("neighboursList", page);
         NeighbourFragment fragment = new NeighbourFragment();
+        fragment.setArguments(b);
         return fragment;
     }
 
@@ -46,6 +50,7 @@ public class NeighbourFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mApiService = DI.getNeighbourApiService();
+        page = getArguments().getInt("neighboursList");
     }
 
     @Override
@@ -60,11 +65,20 @@ public class NeighbourFragment extends Fragment {
     }
 
     /**
-     * Init the List of neighbours
+     * Init the List of neighbours or Favorites
      */
-    private void initList() {
-        mNeighbours = mApiService.getNeighbours();
-        mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
+    private void initList()
+    {
+        if (page ==0)
+        {
+            mNeighbours = mApiService.getNeighbours();
+            mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
+        }
+        else
+        {
+            mNeighbours = mApiService.getFavorites();
+            mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
+        }
     }
 
     @Override
@@ -98,14 +112,7 @@ public class NeighbourFragment extends Fragment {
     @Subscribe
     public void onDetailedNeighbour(DetailedNeighbourEvent event) {
         Intent i = new Intent(getContext(), DetailedProfile.class);
-        i.putExtra("id", event.neighbour.getId());
-        i.putExtra("avatar", event.neighbour.getAvatarUrl());
-        i.putExtra("neighbourName", event.neighbour.getName());
-        i.putExtra("address", event.neighbour.getAddress());
-        i.putExtra("phoneNumber", event.neighbour.getPhoneNumber());
-        i.putExtra("facebook", event.neighbour.getFacebook());
-        i.putExtra("aboutText", event.neighbour.getAboutMe());
-        i.putExtra("favorite", event.neighbour.getIsFavorite());
+        i.putExtra("neighbourInfo", event.neighbour);
         startActivity(i);
     }
 }

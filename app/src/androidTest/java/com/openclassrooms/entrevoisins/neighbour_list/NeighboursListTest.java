@@ -1,7 +1,6 @@
 
 package com.openclassrooms.entrevoisins.neighbour_list;
 
-import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -28,6 +27,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withContentDesc
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.openclassrooms.entrevoisins.utils.RecyclerViewItemCountAssertion.withItemCount;
+import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.core.IsNull.notNullValue;
 
 
@@ -63,7 +63,10 @@ public class NeighboursListTest {
     @Test
     public void myNeighboursList_shouldNotBeEmpty() {
         // First scroll to the position that needs to be matched and click on it.
-        onView(ViewMatchers.withId(R.id.list_neighbours))
+        /*onView(ViewMatchers.withId(R.id.list_neighbours))
+                .check(matches(hasMinimumChildCount(1)));*/
+
+        onView(allOf(withId(R.id.list_neighbours),isDisplayed()))
                 .check(matches(hasMinimumChildCount(1)));
     }
 
@@ -72,7 +75,7 @@ public class NeighboursListTest {
      */
     @Test
     public void myNeighboursList_deleteAction_shouldRemoveItem() {
-        // Given : We remove the element at position 2
+        /*// Given : We remove the element at position 2
         onView(withId(R.id.list_neighbours))
                 .check(withItemCount(ITEMS_COUNT));
         // When perform a click on a delete icon
@@ -80,6 +83,16 @@ public class NeighboursListTest {
                 .perform(actionOnItemAtPosition(1, new DeleteViewAction()));
         // Then : the number of element is 11
         onView(withId(R.id.list_neighbours))
+                .check(withItemCount(ITEMS_COUNT-1));*/
+
+        // Given : We remove the element at position 2
+        onView(allOf(withId(R.id.list_neighbours), isDisplayed()))
+                .check(withItemCount(ITEMS_COUNT));
+        // When perform a click on a delete icon
+        onView(allOf(withId(R.id.list_neighbours), isDisplayed()))
+                .perform(actionOnItemAtPosition(1, new DeleteViewAction()));
+        // Then : the number of element is 11
+        onView(allOf(withId(R.id.list_neighbours), isDisplayed()))
                 .check(withItemCount(ITEMS_COUNT-1));
     }
 
@@ -88,17 +101,29 @@ public class NeighboursListTest {
     public void goToDetailedProfile_onClick()
     {
        //cliquer sur l'élément en identifiant le container parent et ses enfants
-       onView(withId(R.id.list_neighbours))
-               .perform(actionOnItemAtPosition(mPosition, click()));
+       /*onView(withId(R.id.list_neighbours))
+               .perform(actionOnItemAtPosition(mPosition, click()));*/
+
+        //cliquer sur l'élément en identifiant le container parent et ses enfants
+        onView(allOf(withId(R.id.list_neighbours), isDisplayed()))
+                .perform(actionOnItemAtPosition(mPosition, click()));
     }
 
    @Test
    public void onDetailedProfileLaunch_textView_containName()
    {
+       /*
        //cliquer sur l'élément en identifiant le container parent et ses enfants
        onView(withId(R.id.list_neighbours))
                .perform(actionOnItemAtPosition(mPosition, click()));
 
+       //vérifier que le neighbourName est affiché sur l'écran DetailedProfile
+       onView(withId(R.id.firstName))
+               .check(matches(withText(mApiService.getNeighbours().get(mPosition).getName())));*/
+
+       //cliquer sur l'élément en identifiant le container parent et ses enfants
+       onView(allOf(withId(R.id.list_neighbours), isDisplayed()))
+               .perform(actionOnItemAtPosition(mPosition, click()));
        //vérifier que le neighbourName est affiché sur l'écran DetailedProfile
        onView(withId(R.id.firstName))
                .check(matches(withText(mApiService.getNeighbours().get(mPosition).getName())));
@@ -108,24 +133,21 @@ public class NeighboursListTest {
    public void favoritePage_showNeighbours_onlyIfIsFav()
    {
        //cliquer sur l'élément en identifiant le container parent et ses enfants
-       onView(withId(R.id.list_neighbours))
+       onView(allOf(withId(R.id.list_neighbours), isDisplayed()))
                .perform(actionOnItemAtPosition(mPosition, click()));
-
-       //cliquer sur l'étoile pour vérifier le changement de couleur
+       //cliquer sur l'étoile pour ajouter en favori
        onView(withId(R.id.star_button))
                .perform(click());
-
        //retour à la page d'accueil
-       pressBack();
-
-       //cliquer sur l'onglet favori
+       onView(withContentDescription("Back"))
+               .perform(click());
+       //pressBack();
+       //pressBack();
+       //Cliquer sur l'onglet des favoris
        onView(withContentDescription("Favorites"))
                .perform(click());
-
        //vérifier l'affichage des favoris
-       onView(withId(R.id.favorite_list))
+       onView(allOf(withId(R.id.list_neighbours), isDisplayed()))
                .check(matches(isDisplayed()));
-
-//mApiService.getFavorites()
    }
 }

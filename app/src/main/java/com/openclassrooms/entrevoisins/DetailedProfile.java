@@ -1,5 +1,6 @@
 package com.openclassrooms.entrevoisins;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,7 +12,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.openclassrooms.entrevoisins.di.DI;
+import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class DetailedProfile extends AppCompatActivity
 {
@@ -20,6 +25,13 @@ public class DetailedProfile extends AppCompatActivity
     private NeighbourApiService mApiService;
     boolean isFavorite;
 
+    @BindView(R.id.item_list_avatar) ImageView avatar;
+    @BindView(R.id.firstName) TextView firstName;
+    @BindView(R.id.address) TextView address;
+    @BindView(R.id.phoneNumber) TextView phoneNumber;
+    @BindView(R.id.facebook) TextView facebook;
+    @BindView(R.id.about_title) TextView aboutTitle;
+    @BindView(R.id.about_text) TextView aboutText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,52 +40,29 @@ public class DetailedProfile extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ButterKnife.bind(this);
 
-        //id
-        long idAvatar = getIntent().getLongExtra("id",0);
+        Intent i = getIntent();
+        Neighbour neighbour = i.getParcelableExtra("neighbourInfo");
 
-        //avatar
-        ImageView avatar = findViewById(R.id.item_list_avatar);
-        String avatarImage = getIntent().getStringExtra("avatar");
+        long idAvatar = neighbour.getId();
+        String avatarImage = neighbour.getAvatarUrl();
         Glide.with(this)
                 .load(avatarImage)
                 .into(avatar);
 
-        //neighbour name
-        TextView firstName = findViewById(R.id.firstName);
-        String name = getIntent().getStringExtra("neighbourName");
+        String name = neighbour.getName();
         firstName.setText(name);
-
-        getSupportActionBar().setTitle(name);
-
-        //neighbour address
-        TextView address = findViewById(R.id.address);
-        address.setText(getIntent().getStringExtra("address"));
-
-        //neighbour phone
-        TextView phoneNumber = findViewById(R.id.phoneNumber);
-        phoneNumber.setText(getIntent().getStringExtra("phoneNumber"));
-
-        //neighbour facebook
-        TextView facebook = findViewById(R.id.facebook);
-        facebook.setText(getIntent().getStringExtra("facebook") + name);
-
-        //about me title
-        TextView about_title = findViewById(R.id.about_title);
-        about_title.setText("À propos de moi");
-
-        //about me text
-        TextView about_text = findViewById(R.id.about_text);
-        about_text.setText(getIntent().getStringExtra("aboutText"));
-
-        //isFavorite
-        isFavorite = getIntent().getBooleanExtra("favorite", false);
-
+        address.setText(neighbour.getAddress());
+        phoneNumber.setText(neighbour.getPhoneNumber());
+        facebook.setText(neighbour.getFacebook() + name);
+        aboutTitle.setText("À propos de moi");
+        aboutText.setText(neighbour.getAboutMe());
+        isFavorite = neighbour.getIsFavorite();
         mApiService = DI.getNeighbourApiService();
 
         //branchement du favorite button
         mStarButton = findViewById(R.id.star_button);
-
 
         //étoile par défaut sans clic en fonction de l'état cad favori ou non
         if (!isFavorite)
